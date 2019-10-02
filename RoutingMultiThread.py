@@ -11,8 +11,7 @@ def routing(function, urls, thread_limit=20):
     begin = datetime.now()
     p = 0.0
     threads = []
-    print(f'Begin at {begin.strftime("%H:%M")}')
-
+    print(f'Begin at {begin.strftime("%H:%M")} for {len(urls)} request')
     try:
         for i, url in enumerate(urls):
             while threading.active_count() > thread_limit:

@@ -16,7 +16,7 @@ def request_with_retry(url, retry=RETRY_COUNT, soup=True, headers=HEADERS):
         try:
             req = urllib.request.Request(url, headers=headers)
             res = urllib.request.urlopen(req)
-            if res:
+            if soup:
                 res = BeautifulSoup.BeautifulSoup(res, "lxml")
             return res
         except Exception as e:
