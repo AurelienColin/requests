@@ -7,6 +7,7 @@ from Rignak_Misc.TWRV import ThreadWithReturnValue
 
 
 def routing(function, urls, thread_limit=20):
+    thread_limit += threading.active_count()
     request_number = len(urls)
     begin = datetime.now()
     p = 0.0
