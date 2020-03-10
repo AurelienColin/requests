@@ -5,12 +5,12 @@ import time
 import os
 import shutil
 import browsercookie
+import browser_cookie3 as browsercookie
 
 HEADERS = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko)'
                          ' Chrome/23.0.1271.64 Safari/537.11'}
 RETRY_COUNT = 5
 cj = browsercookie.chrome()
-
 
 def request_with_retry(url, retry=RETRY_COUNT, soup=True, headers=HEADERS):
     ok = 0
