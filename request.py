@@ -29,13 +29,16 @@ def request_with_retry(url, retry=RETRY_COUNT, soup=True, headers=HEADERS):
 def request_stream(url, payload={}, headers=HEADERS, retry=RETRY_COUNT):
     ok = 0
     while ok < retry:
-        r = requests.get(url, stream=True, data=payload, headers=headers, cookies=cj)
-        if r.status_code == 200:
-            return r.raw
-        elif r.status_code == 429:  # spam
-            time.sleep(1)
-        else:
-            print(r.status_code, url)
+        try:
+            r = requests.get(url, stream=True, data=payload, headers=headers, cookies=cj)
+            if r.status_code == 200:
+                return r.raw
+            elif r.status_code == 429:  # spam
+                time.sleep(1)
+            else:
+                print(r.status_code, url)
+        except Exception as e:
+            print(f'request.request_stream: Error: {url} because of "{e}"')
         ok += 1
 
 
